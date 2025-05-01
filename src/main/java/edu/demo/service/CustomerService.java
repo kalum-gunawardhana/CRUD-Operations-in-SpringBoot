@@ -1,5 +1,7 @@
 package edu.demo.service;
 
-public interface CustomerService {
+import edu.demo.entity.Customer;
 
+public interface CustomerService {
+    Customer postCustomer(Customer customer);
 }
