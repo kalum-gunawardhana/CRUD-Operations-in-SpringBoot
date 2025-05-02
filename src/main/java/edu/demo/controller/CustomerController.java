@@ -7,33 +7,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 @RequestMapping("/customers")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("/add")
+    @PostMapping()
     public Customer addCustomer(@RequestBody Customer customer){
         return customerService.saveCustomer(customer);
     }
 
-    @GetMapping("/get/{id}")
-    public Customer getCustomerById(@PathVariable Long id){
-        return customerService.getCustomerById(id);
+    @GetMapping("/{name}")
+    public Customer getCustomerByName(@PathVariable String name){
+        return customerService.getCustomerByName(name);
     }
 
-    @GetMapping("/get-all")
+    @GetMapping()
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer){
         return customerService.updateCustomer(id, updatedCustomer);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable Long id){
         customerService.deleteCustomer(id);
     }
